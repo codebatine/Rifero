@@ -1,0 +1,96 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.app {
+  text-align: center;
+  padding: 20px;
+}
+
+header {
+  margin-bottom: 30px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+}
+
+.connect-btn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.connect-btn:hover {
+  background-color: #2980b9;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.balance,
+.referrals {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+  max-width: 400px;
+  text-align: left;
+}
+
+.referrals ul {
+  list-style: none;
+  padding: 0;
+}
+
+.referrals ul li {
+  background-color: #ecf0f1;
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+.referral-form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.referral-form button {
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.referral-form button:hover {
+  background-color: #27ae60;
+}
+
+@media (max-width: 768px) {
+  header h1 {
+      font-size: 2rem;
+  }
+
+  .content {
+      gap: 15px;
+  }
+}

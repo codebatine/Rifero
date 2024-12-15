@@ -1,0 +1,2 @@
+export const TOKEN_ADDRESS = '0x454ba6e6dec3bf200b4b5835c16f0342410ecc1e';
+export const PLATFORM_ADDRESS = '0xe8806fc0f62174dd3587e7792e624535cafdd3ed';
