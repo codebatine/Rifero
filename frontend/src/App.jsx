@@ -33,6 +33,8 @@ const App = () => {
             const address = await signer.getAddress();
             setWalletAddress(address);
 
+            localStorage.setItem("walletAddress", address); // Save wallet address to localStorage
+
             const platform = new ethers.Contract(PLATFORM_ADDRESS, RiferoPlatformABI.abi, signer);
             const token = new ethers.Contract(TOKEN_ADDRESS, RiferoTokenABI.abi, signer);
 
@@ -45,28 +47,52 @@ const App = () => {
             const refs = await platform.getReferrals(address);
             setReferrals(refs);
 
-            const urlParams = new URLSearchParams(window.location.search);
-            const referrer = urlParams.get("ref");
-            if (referrer && ethers.isAddress(referrer)) {
-                createReferral(referrer);
-            }
-
             console.log("Connected to Platform Contract:", platform);
             console.log("Connected to Token Contract:", token);
-            console.log("Referrals:", refs);
         } catch (error) {
             console.error("Error connecting wallet:", error);
             alert("Failed to connect wallet. Check console for details.");
         }
     };
 
+    const reconnectWallet = async () => {
+        const savedAddress = localStorage.getItem("walletAddress");
+        if (savedAddress && window.ethereum) {
+            try {
+                const provider = new ethers.BrowserProvider(window.ethereum);
+                const signer = await provider.getSigner();
+
+                setWalletAddress(savedAddress);
+
+                const platform = new ethers.Contract(PLATFORM_ADDRESS, RiferoPlatformABI.abi, signer);
+                const token = new ethers.Contract(TOKEN_ADDRESS, RiferoTokenABI.abi, signer);
+
+                setPlatformContract(platform);
+                setTokenContract(token);
+
+                const balance = await token.balanceOf(savedAddress);
+                setTokenBalance(ethers.formatUnits(balance, 18));
+
+                const refs = await platform.getReferrals(savedAddress);
+                setReferrals(refs);
+
+                console.log("Wallet reconnected:", savedAddress);
+            } catch (error) {
+                console.error("Error reconnecting wallet:", error);
+                localStorage.removeItem("walletAddress");
+            }
+        }
+    };
+
+    useEffect(() => {
+        reconnectWallet(); // Attempt to reconnect wallet on page load
+    }, []);
+
     const createReferral = async (referee) => {
         if (!referee || !ethers.isAddress(referee)) {
             setMessage("Please enter a valid Ethereum address.");
             return;
         }
-
-        console.log("Creating referral for:", referee);
 
         try {
             if (!platformContract || !tokenContract) {
@@ -106,25 +132,6 @@ const App = () => {
         }
     };
 
-    useEffect(() => {
-        if (walletAddress && platformContract && tokenContract) {
-            const fetchData = async () => {
-                try {
-                    const balance = await tokenContract.balanceOf(walletAddress);
-                    setTokenBalance(ethers.formatUnits(balance, 18));
-
-                    const refs = await platformContract.getReferrals(walletAddress);
-                    setReferrals(refs);
-
-                    console.log("Referrals:", refs);
-                } catch (error) {
-                    console.error("Error fetching data:", error);
-                }
-            };
-            fetchData();
-        }
-    }, [walletAddress, platformContract, tokenContract]);
-
     return (
         <div className="app">
             <header>
@@ -151,9 +158,7 @@ const App = () => {
                                 <p>No referrals yet</p>
                             ) : (
                                 referrals.map((ref, index) => (
-                                    <li key={index}>
-                                        {ref} {/* Display each referee address */}
-                                    </li>
+                                    <li key={index}>{ref}</li>
                                 ))
                             )}
                         </ul>
