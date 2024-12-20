@@ -58,6 +58,29 @@ header h1 {
   padding-bottom: 20px;
 }
 
+.wallet-info {
+  background: linear-gradient(145deg, #2d3748, #4a5568);
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  padding: 15px 25px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  color: #e2e8f0;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  transition: transform 0.2s ease;
+}
+
+.wallet-info:hover {
+  transform: translateY(-5px);
+}
+
+
+
 .balance,
 .referrals {
   background: linear-gradient(145deg, #2d3748, #4a5568);

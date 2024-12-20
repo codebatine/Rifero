@@ -33,7 +33,7 @@ const App = () => {
             const address = await signer.getAddress();
             setWalletAddress(address);
 
-            localStorage.setItem("walletAddress", address); // Save wallet address to localStorage
+            localStorage.setItem("walletAddress", address);
 
             const platform = new ethers.Contract(PLATFORM_ADDRESS, RiferoPlatformABI.abi, signer);
             const token = new ethers.Contract(TOKEN_ADDRESS, RiferoTokenABI.abi, signer);
@@ -85,7 +85,7 @@ const App = () => {
     };
 
     useEffect(() => {
-        reconnectWallet(); // Attempt to reconnect wallet on page load
+        reconnectWallet();
     }, []);
 
     const createReferral = async (referee) => {
@@ -141,7 +141,10 @@ const App = () => {
                         Connect Wallet
                     </button>
                 ) : (
-                    <p>Wallet: {walletAddress}</p>
+                    <div className="wallet-info">
+                        <p>Connected Wallet:</p>
+                        <p>{walletAddress}</p>
+                    </div>
                 )}
             </header>
             {walletAddress && (
