@@ -12,6 +12,7 @@ const App = () => {
     const [platformContract, setPlatformContract] = useState(null);
     const [tokenContract, setTokenContract] = useState(null);
     const [message, setMessage] = useState("");
+    const [referralLink, setReferralLink] = useState("");
 
     const connectWallet = async () => {
         if (!window.ethereum) {
@@ -43,6 +44,12 @@ const App = () => {
 
             const refs = await platform.getReferrals(address);
             setReferrals(refs);
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const referrer = urlParams.get("ref");
+            if (referrer && ethers.isAddress(referrer)) {
+                createReferral(referrer);
+            }
 
             console.log("Connected to Platform Contract:", platform);
             console.log("Connected to Token Contract:", token);
@@ -84,6 +91,18 @@ const App = () => {
         } catch (error) {
             console.error("Error creating referral:", error);
             setMessage("Failed to create referral. Check console for details.");
+        }
+    };
+
+    const generateReferralLink = () => {
+        if (walletAddress) {
+            const link = `${window.location.origin}?ref=${walletAddress}`;
+            setReferralLink(link);
+            navigator.clipboard.writeText(link).then(() => {
+                setMessage("Referral link copied to clipboard!");
+            });
+        } else {
+            setMessage("Please connect your wallet to generate a referral link.");
         }
     };
 
@@ -147,6 +166,10 @@ const App = () => {
                             >
                                 Create Referral
                             </button>
+                        </div>
+                        <div className="generate-link">
+                            <button onClick={generateReferralLink}>Copy Referral Link</button>
+                            {referralLink && <p>Your link: {referralLink}</p>}
                         </div>
                     </div>
                 </div>
