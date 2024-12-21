@@ -28,13 +28,13 @@ header {
 
 header h1 {
   font-size: 2.5rem;
-  color: #38bdf8;
+  color: #dd4fcf;
   margin: 0;
 }
 
 .connect-btn {
   margin-top: 20px;
-  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  background: linear-gradient(90deg, #dd4fcf, #f78acb);
   color: white;
   border: none;
   padding: 14px 28px;
@@ -46,7 +46,7 @@ header h1 {
 }
 
 .connect-btn:hover {
-  background: linear-gradient(90deg, #1e3a8a, #2563eb);
+  background: linear-gradient(90deg, #c43cb5, #dd4fcf);
   transform: scale(1.05);
 }
 
@@ -60,6 +60,7 @@ header h1 {
 
 .wallet-info {
   background: linear-gradient(145deg, #2d3748, #4a5568);
+  border: 2px solid #dd4fcf;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
   padding: 15px 25px;
@@ -79,11 +80,10 @@ header h1 {
   transform: translateY(-5px);
 }
 
-
-
 .balance,
 .referrals {
   background: linear-gradient(145deg, #2d3748, #4a5568);
+  border: 2px solid #dd4fcf;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
   padding: 25px;
@@ -109,7 +109,7 @@ header h1 {
   padding: 12px;
   margin: 8px 0;
   border-radius: 8px;
-  border-left: 5px solid #38bdf8;
+  border-left: 5px solid #dd4fcf;
   transition: background-color 0.3s ease;
 }
 
@@ -135,7 +135,7 @@ header h1 {
 }
 
 .referral-form button {
-  background: linear-gradient(90deg, #22c55e, #16a34a);
+  background: linear-gradient(90deg, #dd4fcf, #f78acb);
   color: white;
   border: none;
   padding: 14px 28px;
@@ -146,12 +146,12 @@ header h1 {
 }
 
 .referral-form button:hover {
-  background: linear-gradient(90deg, #15803d, #166534);
+  background: linear-gradient(90deg, #c43cb5, #dd4fcf);
   transform: scale(1.05);
 }
 
 .generate-link button {
-  background: linear-gradient(90deg, #0ea5e9, #0284c7);
+  background: linear-gradient(90deg, #dd4fcf, #f78acb);
   color: white;
   border: none;
   padding: 14px 28px;
@@ -164,7 +164,7 @@ header h1 {
 }
 
 .generate-link button:hover {
-  background: linear-gradient(90deg, #0369a1, #075985);
+  background: linear-gradient(90deg, #c43cb5, #dd4fcf);
   transform: scale(1.05);
 }
 
@@ -174,6 +174,18 @@ header h1 {
   color: #e2e8f0;
   word-break: break-all;
   text-align: center;
+}
+
+.footer {
+  margin-top: 20px;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #e2e8f0;
+  background: linear-gradient(145deg, #2d3748, #4a5568);
+  border: 2px solid #dd4fcf;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 @media (max-width: 768px) {
