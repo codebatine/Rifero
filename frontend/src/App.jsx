@@ -4,6 +4,7 @@ import { PLATFORM_ADDRESS, TOKEN_ADDRESS } from './config';
 import RiferoPlatformABI from './abis/RiferoPlatform.json';
 import RiferoTokenABI from './abis/RiferoToken.json';
 import './styles.css';
+import logo from './assets/img/rifero.png';
 
 const App = () => {
   const [walletAddress, setWalletAddress] = useState('');
@@ -155,6 +156,7 @@ const App = () => {
   return (
     <div className="app">
       <header>
+        <img src={logo} alt="Rifero Logo" className="rifero-logo" />
         <h1>Rifero</h1>
         {!walletAddress ? (
           <button
