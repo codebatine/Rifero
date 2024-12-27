@@ -6,17 +6,11 @@ Rifero is a referral platform designed for Web3. Using smart contracts to simpli
 
 The platform aims to streamline the referral process in Web3 by allowing users to generate unique links, track their referrals and earn rewards. In an all blockchain based solution where users keep control over their data.
 
-## **Screenshots and Logo**
-
-### **Rifero Logo**
-
-![Rifero Logo](./frontend/src/assets/img/rifero-logo.png 'Rifero Logo')
-
-### **Screenshot 1: App Start**
+### App Start
 
 ![App Interface](./frontend/src/assets/img/rifero-start.png 'Rifero App')
 
-### **Screenshot 2: Referral Workflow**
+### Dashboard
 
 ![Referral Workflow](./frontend/src/assets/img/rifero-dashboard.png 'Rifero Dashboard')
 
